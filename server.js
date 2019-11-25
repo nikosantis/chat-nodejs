@@ -1,8 +1,10 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const router = express.Router()
 
 var app = express()
-
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(router)
 
 router.get('/', function (req, res) {
@@ -10,7 +12,9 @@ router.get('/', function (req, res) {
 })
 
 router.post('/', function (req, res) {
-  res.send('Hola desde /post')
+  console.log(req.query)
+  console.log(req.body)
+  res.send(`Hola desde /post ${req.body.text}`)
 })
 
 router.patch('/', function (req, res) {
