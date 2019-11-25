@@ -7,22 +7,18 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(router)
 
-router.get('/', function (req, res) {
-  res.send('Hola desde /get')
+router.get('/message', function (req, res) {
+  console.log(req.headers)
+  res.header({
+    "custom-header": "Nuestro valor personalizado",
+  })
+  res.send('Lista de mensajes')
 })
 
-router.post('/', function (req, res) {
+router.delete('/message', function (req, res) {
   console.log(req.query)
   console.log(req.body)
-  res.send(`Hola desde /post ${req.body.text}`)
-})
-
-router.patch('/', function (req, res) {
-  res.send('Hola desde /patch')
-})
-
-router.delete('/', function (req, res) {
-  res.send('Hola desde /delete')
+  res.send(`Mensaje ${req.body.text} añadido correctamente`)
 })
 
 // app.use('/', function(req, res) {
