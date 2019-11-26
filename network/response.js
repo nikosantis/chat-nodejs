@@ -1,4 +1,4 @@
-exports.succes = function (req, res, message, status) {
+exports.success = function (req, res, message, status) {
   res.status(status || 200).send({
     error: '',
     body: message
