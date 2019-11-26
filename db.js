@@ -1,8 +1,13 @@
 const db = require('mongoose')
+const { config } = require('./config')
+
+const USER = encodeURIComponent(config.dbUser)
+const PASSWORD = encodeURIComponent(config.dbPassword)
+const DB_NAME = encodeURIComponent(config.dbName)
+
+module.exports = MONGO_URI = `mongodb+srv://${USER}:${PASSWORD}@${config.dbHost}/${DB_NAME}?retryWrites=true&w=majority`
 
 db.Promise = global.Promise
-
-// 'mongodb+srv://niko-user_db:MONtonia2008@@cluster0-j71iy.mongodb.net/telegrom?retryWrites=true&w=majority'
 
 async function connect(url) {
   await db.connect(url,
