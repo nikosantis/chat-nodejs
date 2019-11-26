@@ -10,7 +10,7 @@ async function getMessages(filterChat) {
   return new Promise((resolve, reject) => {
     let filter = {}
     if (filterChat !== null) {
-      filter = { Chat: filterChat }
+      filter = { chat: filterChat }
     }
     Model.find(filter)
       .populate('user')
